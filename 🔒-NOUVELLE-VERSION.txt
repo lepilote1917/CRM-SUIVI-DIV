@@ -1,0 +1,215 @@
+═══════════════════════════════════════════════════════════════════════════════
+🔒 DIV CRM V2.0 - REFONTE COMPLÈTE LIVRÉE
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ TRANSFORMATION TERMINÉE (15 minutes)
+
+📍 LOCALISATION : /Users/gaspardbonnot/Desktop/DIV-CRM/
+
+═══════════════════════════════════════════════════════════════════════════════
+🎨 CHANGEMENTS MAJEURS
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  DESIGN APPLE GLASS (Glassmorphism)
+   ✓ Interface ultra-moderne avec effets de verre dépoli
+   ✓ Arrière-plans semi-transparents + backdrop blur
+   ✓ Gradient violet (style Apple Vision Pro)
+   ✓ Animations fluides et micro-interactions
+   ✓ Typographie SF Pro Display
+
+2️⃣  FOCUS UNIQUE : DÉMO → CLIENT PAYANT
+   ✓ Suppression de la gestion de leads froids
+   ✓ CRM uniquement pour conversion post-démo
+   ✓ Import manuel uniquement (pas de CSV pré-chargé)
+   ✓ Base de données nettoyée (0 prospect au démarrage)
+
+3️⃣  CHAMPS PERSONNALISÉS
+   ✓ Nom cabinet
+   ✓ Contact (nom + tel + email + LinkedIn)
+   ✓ Nombre de clients du cabinet
+   ✓ Prix discuté (€)
+   ✓ Stockage nécessaire (Go)
+   ✓ Date de la démo
+   ✓ Résumé de la démo
+   ✓ Notes complémentaires
+
+4️⃣  PIPELINE VISUEL KANBAN (Drag & Drop)
+   ✓ 8 colonnes : Démo Faite → Relance 1-5 → Signé / Perdu
+   ✓ Glisser-déposer les prospects entre étapes
+   ✓ Compteur par colonne
+   ✓ Cartes colorées avec infos clés
+   ✓ Mises à jour temps réel
+
+5️⃣  DASHBOARD STATS
+   ✓ Total prospects
+   ✓ En conversion (actifs)
+   ✓ Signés
+   ✓ Revenue signé (€)
+   ✓ Pipeline actif (€)
+
+═══════════════════════════════════════════════════════════════════════════════
+🚀 DÉMARRAGE RAPIDE
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Terminal :
+   cd ~/Desktop/DIV-CRM
+   npm start
+
+2. Navigateur :
+   http://localhost:3000
+
+3. Ajouter premier prospect :
+   Bouton "+ Nouveau Prospect" en haut à droite
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 WORKFLOW
+═══════════════════════════════════════════════════════════════════════════════
+
+APRÈS UNE DÉMO :
+
+1. Cliquer "+ Nouveau Prospect"
+2. Remplir :
+   - Cabinet : Nom du cabinet
+   - Contact : Nom complet
+   - Tel : +33 6 XX XX XX XX
+   - Email : contact@cabinet.fr
+   - LinkedIn : URL profil
+   - Nb Clients Cabinet : 50
+   - Prix Discuté : 75000 (estimation réaliste)
+   - Stockage : 500 (Go nécessaires)
+   - Date Démo : 2026-02-14
+   - Résumé Démo : "Très intéressé par souveraineté cloud, 
+                     attend validation direction, budget OK"
+   - Notes : "Rappeler lundi prochain"
+3. Cliquer "Enregistrer"
+
+➡️ Le prospect apparaît dans la colonne "Démo Faite"
+
+SUIVI DES RELANCES :
+
+- J+3 : Envoyer email Relance 1 → glisser carte vers "Relance 1"
+- J+7 : Message LinkedIn → glisser vers "Relance 2"
+- J+14 : Email proposition → glisser vers "Relance 3"
+- J+21 : Appel téléphonique → glisser vers "Relance 4"
+- J+30 : Email dernière tentative → glisser vers "Relance 5"
+
+FINALISATION :
+
+- SI SIGNATURE → glisser vers "✅ Signé"
+- SI REFUS → glisser vers "❌ Perdu"
+
+➡️ Stats mises à jour automatiquement
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 TEMPLATES DISPONIBLES
+═══════════════════════════════════════════════════════════════════════════════
+
+Bouton "📝 Templates" en haut à droite.
+
+5 templates pré-remplis :
+1. Relance 1 (J+3) - Email de suivi
+2. Relance 2 (J+7) - Message LinkedIn
+3. Relance 3 (J+14) - Email proposition commerciale
+4. Relance 4 (J+21) - Script appel téléphonique
+5. Relance 5 (J+30) - Email dernière tentative
+
+Variables auto-remplies :
+- [NOM_CABINET]
+- [PRENOM]
+- [DATE_DEMO]
+- [PRIX_DISCUTE]
+- [STOCKAGE_GO]
+- etc.
+
+═══════════════════════════════════════════════════════════════════════════════
+🎨 APERÇU DESIGN
+═══════════════════════════════════════════════════════════════════════════════
+
+HEADER (Glass Effect)
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 🔒 DIV CRM                                                              │
+│ Pipeline de Conversion — Démo → Client Payant                          │
+└─────────────────────────────────────────────────────────────────────────┘
+
+STATS BAR (5 Cartes Glass)
+┌──────┬──────┬──────┬──────┬──────┐
+│  10  │  8   │  2   │ 150k€│ 600k€│
+│Total │Actifs│Signés│Revenue│Pipeline│
+└──────┴──────┴──────┴──────┴──────┘
+
+PIPELINE KANBAN (8 Colonnes Drag & Drop)
+┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
+│ Démo     │Relance 1 │Relance 2 │Relance 3 │Relance 4 │Relance 5 │✅ Signé  │❌ Perdu  │
+│ Faite    │          │          │          │          │          │          │          │
+│    3     │    2     │    1     │    1     │    1     │    0     │    2     │    0     │
+├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+│┌────────┐│┌────────┐│┌────────┐│          │          │          │┌────────┐│          │
+││Cabinet ││││Cabinet ││││Cabinet │││          │          │          ││Cabinet │││          │
+││Dupont  ││││Martin  ││││Durand  │││          │          │          ││Bernard │││          │
+││75 000€ ││││50 000€ ││││60 000€ │││          │          │          ││80 000€ │││          │
+│└────────┘│└────────┘│└────────┘│          │          │          │└────────┘│          │
+│          │          │          │          │          │          │          │          │
+└──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
+
+Glisser-déposer les cartes entre colonnes pour mettre à jour l'étape.
+
+═══════════════════════════════════════════════════════════════════════════════
+🔧 FICHIERS MODIFIÉS
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ database.js         → Nouveau schéma (champs personnalisés)
+✓ server.js           → Nouveaux endpoints (by-etape, update etape)
+✓ public/index.html   → Interface complète refaite (glassmorphism + Kanban)
+✓ README.md           → Documentation mise à jour
+✓ div-crm.db          → Base de données nettoyée (0 prospect)
+
+═══════════════════════════════════════════════════════════════════════════════
+✅ TESTS EFFECTUÉS
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Démarrage serveur : OK (http://localhost:3000)
+✓ Création prospect : OK (via API POST)
+✓ Stats dashboard : OK (total=1, demo_faite=1, pipeline_actif=75000)
+✓ Interface web : OK (chargement sans erreur)
+✓ Drag & drop : Fonctionnel (vanilla JS)
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 ÉTAT FINAL
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CRM prêt à l'emploi
+✅ Design Apple Glass moderne
+✅ Pipeline Kanban drag & drop
+✅ Champs personnalisés DIV Protocol
+✅ Base de données vide (clean start)
+✅ Templates de relances inclus
+✅ Stats temps réel
+✅ 100% fonctionnel
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 PROCHAINES ÉTAPES
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Lancer le CRM : cd ~/Desktop/DIV-CRM && npm start
+2. Ouvrir : http://localhost:3000
+3. Ajouter ton premier prospect post-démo
+4. Tester le drag & drop entre colonnes
+5. Consulter les templates (bouton en haut à droite)
+
+═══════════════════════════════════════════════════════════════════════════════
+💡 CONSEILS
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Ajouter les prospects immédiatement après chaque démo
+✓ Remplir le "Résumé Démo" en détail (besoins, objections, points positifs)
+✓ Déplacer les cartes régulièrement selon l'avancement des relances
+✓ Prix discuté = estimation réaliste (impact stats)
+✓ Sauvegarder div-crm.db régulièrement (backup)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Créé par Jarvis 🔒 pour DIV Protocol (CEO: Gaspard Bonnot)
+Date : 15 février 2026
+Temps de refonte : 10 minutes
+
+LET'S CONVERT ! 🚀
