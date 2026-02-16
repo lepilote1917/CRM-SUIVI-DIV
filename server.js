@@ -38,15 +38,19 @@ app.post('/api/auth/logout', (req, res) => {
   res.json({ ok: true });
 });
 
+// Servir page de login AVANT middleware auth
+app.get('/login.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
 // ===== MIDDLEWARE D'AUTHENTIFICATION =====
 
 app.use((req, res, next) => {
-  // Exclure assets statiques, login, et auth API
+  // Exclure assets statiques et auth API
   const isPublicAsset = /\.(css|js|png|jpg|jpeg|gif|svg|ico|woff2?|ttf|eot)$/i.test(req.path);
-  const isLoginPage = req.path === '/login.html';
   const isAuthAPI = req.path.startsWith('/api/auth/');
   
-  if (isPublicAsset || isLoginPage || isAuthAPI) {
+  if (isPublicAsset || isAuthAPI) {
     return next();
   }
   
