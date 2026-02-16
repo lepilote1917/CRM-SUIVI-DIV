@@ -450,9 +450,14 @@
 </head>
 <body>
   <!-- Header -->
-  <div class="header glass">
-    <h1>🔒 DIV CRM</h1>
-    <p>Pipeline de Conversion — Démo → Client Payant</p>
+  <div class="header glass" style="display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <h1>🔒 DIV CRM</h1>
+      <p>Pipeline de Conversion — Démo → Client Payant</p>
+    </div>
+    <button id="lockBtn" style="padding: 12px 24px; background: rgba(255,92,122,.2); color: #fff; border: 2px solid rgba(255,92,122,.5); border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(255,92,122,.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,92,122,.2)'">
+      🔒 Verrouiller
+    </button>
   </div>
 
   <!-- Stats -->
@@ -875,6 +880,18 @@
     function formatPrice(price) {
       return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(price);
     }
+    
+    // Bouton de verrouillage
+    document.getElementById('lockBtn').onclick = async () => {
+      if(!confirm('🔒 Verrouiller la session ?\n\nToutes les données sont sauvegardées automatiquement.\nTu devras te reconnecter après.')) return;
+      
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' });
+        window.location.href = '/login.html';
+      } catch (err) {
+        alert('Erreur lors de la déconnexion');
+      }
+    };
     
     // Init on load
     init();

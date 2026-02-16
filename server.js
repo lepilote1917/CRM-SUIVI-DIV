@@ -4,12 +4,70 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('./database');
 const { templates, remplirTemplate } = require('./templates');
+const { checkPassword, SESSION_SECRET } = require('./auth');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
+
+// ===== AUTH ENDPOINTS (AVANT MIDDLEWARE) =====
+
+app.post('/api/auth/login', (req, res) => {
+  const { password } = req.body;
+  if (checkPassword(password)) {
+    const maxAge = 30 * 24 * 60 * 60; // 30 jours
+    const secure = process.env.NODE_ENV === 'production' ? '; Secure' : '';
+    res.setHeader('Set-Cookie', `divcrm_auth=${SESSION_SECRET}; HttpOnly${secure}; Path=/; Max-Age=${maxAge}; SameSite=Lax`);
+    res.json({ ok: true });
+  } else {
+    res.status(401).json({ error: 'Invalid password' });
+  }
+});
+
+app.get('/api/auth/check', (req, res) => {
+  const authCookie = req.headers.cookie?.split(';')
+    .find(c => c.trim().startsWith('divcrm_auth='))
+    ?.split('=')[1];
+  res.json({ authenticated: authCookie === SESSION_SECRET });
+});
+
+app.post('/api/auth/logout', (req, res) => {
+  res.setHeader('Set-Cookie', 'divcrm_auth=; HttpOnly; Path=/; Max-Age=0');
+  res.json({ ok: true });
+});
+
+// ===== MIDDLEWARE D'AUTHENTIFICATION =====
+
+app.use((req, res, next) => {
+  // Exclure assets statiques, login, et auth API
+  const isPublicAsset = /\.(css|js|png|jpg|jpeg|gif|svg|ico|woff2?|ttf|eot)$/i.test(req.path);
+  const isLoginPage = req.path === '/login.html';
+  const isAuthAPI = req.path.startsWith('/api/auth/');
+  
+  if (isPublicAsset || isLoginPage || isAuthAPI) {
+    return next();
+  }
+  
+  // Vérifier cookie
+  const authCookie = req.headers.cookie?.split(';')
+    .find(c => c.trim().startsWith('divcrm_auth='))
+    ?.split('=')[1];
+
+  if (authCookie === SESSION_SECRET) {
+    return next();
+  }
+
+  // Non authentifié
+  if (req.path.startsWith('/api/')) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  
+  res.redirect('/login.html');
+});
+
+// Servir fichiers statiques APRÈS auth
 app.use(express.static('public'));
 
 // Initialize DB schema
